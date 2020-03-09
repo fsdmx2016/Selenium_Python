@@ -1,12 +1,11 @@
-import ddt
 import unittest
-from PIL import Image
+import sys
+import ddt
 from Util.operate_excel import operaExcel
-from Util.get_data import GetData
 from log.user_log import UserLog
 
-ex=operaExcel()
-data=ex.get_lines()
+# ex=operaExcel()
+# data=ex.get_lines()
 
 @ddt.ddt
 class DataTest(unittest.TestCase):

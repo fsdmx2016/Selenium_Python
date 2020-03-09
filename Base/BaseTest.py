@@ -11,8 +11,12 @@ import random
 import sys
 chrome_driver = "D:\work\chromedriver.exe"
 driver = webdriver.Chrome(executable_path=chrome_driver)
-driver.get('http://www.5itest.cn/register')  # 进入百度首页
-time.sleep(5)
+driver.get('http://www.5itest.cn/login?goto=http%3A//www.5itest.cn/')  # 进入百度首页
+logBtn=driver.find_element_by_class_name("form-vertical").find_elements_by_class_name("form-group")[3]
+
+
+# print(driver.find_element_by_class_name(logBtn[3]))
+
 # 验证某个元素是否存在
 # print(EC.title_contains("注册"))
 # 判断邮箱地址是否存在，存在就进行操作
@@ -23,19 +27,19 @@ time.sleep(5)
 # user_name = ''.join(random.sample("123456abcdefghi", 5))
 # email.send_keys(user_name)
 # time.sleep(5)
-driver.save_screenshot("D:\work\Selenium_Python\Screan.png")
-code_element = driver.find_element_by_id("getcode_num")
-# 坐标的起始点
-left = code_element.location['x']
-# 坐标的顶点
-top = code_element.location['y']
-#坐标的最右边零点
-right = code_element.size['width'] + left
-#左边的右上角
-height = code_element.size['height'] + top
-image=Image.open("D:\work\Selenium_Python\Screan.png")
-im=image.crop((left,top,right,height))
-im.save("D:\work\Selenium_Python\Screan1.png")
+# driver.save_screenshot("D:\work\Selenium_Python\Screan.png")
+# code_element = driver.find_element_by_id("getcode_num")
+# # 坐标的起始点
+# left = code_element.location['x']
+# # 坐标的顶点
+# top = code_element.location['y']
+# #坐标的最右边零点
+# right = code_element.size['width'] + left
+# #左边的右上角
+# height = code_element.size['height'] + top
+# image=Image.open("D:\work\Selenium_Python\Screan.png")
+# im=image.crop((left,top,right,height))
+# im.save("D:\work\Selenium_Python\Screan1.png")
 
 # def identifyingCode(startx, starty, endx, endy):
 #     # driver.get_screenshot_as_file(os.getcwd() + '\\cirsschan.png')

@@ -12,11 +12,7 @@ class RunMain(unittest.TestCase):
     def setUpClass(cls):
         os.system("taskkill /f /im chromedriver.exe")
 
-    # //关闭driver所有进程
-    def setUp(self):
-        os.system("taskkill /f /im chromedriver.exe")
-
-    def run_method(self):
+    def test_run_method(self):
         # 启动appium服务
         # server = Server()
         # server.main()
@@ -40,11 +36,10 @@ class RunMain(unittest.TestCase):
                 expect_result = getattr(action_method, expect_step)
                 expect_result(expect_key)
 
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(cls):
         os.system("taskkill /f /im chromedriver.exe")
 
 
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    suite.addTest(RunMain("run_method"))
-    unittest.TextTestRunner().run(suite)
+    unittest.main()

@@ -21,6 +21,10 @@ class findElement:
                     return self.driver.find_elements_by_class_name(local_by)
                 elif by == 'name':
                     return self.driver.find_element_by_name(local_by)
+                elif by == 'link_text':
+                    return self.driver.find_element_by_link_text(local_by)
+                elif by == 'compose':
+                    return self.driver.find_element_by_class_name("form-vertical").find_elements_by_class_name("form-group")[3]
                 else:
                     return self.driver.find_element_by_xpath(local_by)
             except:

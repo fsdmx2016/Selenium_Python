@@ -1,9 +1,9 @@
 # coding=utf-8
 import time
 
-from Util import find_element
-from Util.find_element import findElement
 from selenium import webdriver
+
+from Util.find_element import findElement
 
 
 class ActionMethod:
@@ -11,7 +11,7 @@ class ActionMethod:
         chrome_driver = "D:\work\chromedriver.exe"
         self.base_driver = webdriver.Chrome(executable_path=chrome_driver)
         self.findelement = findElement(self.base_driver)
-        # self.base_driver.get('http://www.5itest.cn/register')
+        self.base_driver.get('http://www.5itest.cn/login?goto=http%3A//www.5itest.cn/')
     def open_browser(self):
         chrome_driver = "D:\work\chromedriver.exe"
         self.base_driver = webdriver.Chrome(executable_path=chrome_driver)
@@ -25,18 +25,20 @@ class ActionMethod:
         输入值
         '''
         # key,value
+
         element = self.findelement.get_element(args[0])
         if element == None:
             return args[0], "元素没找到"
+        element.clear()
         element.send_keys(args[1])
 
-    def on_click(self,key):
+    def on_click(self, *args):
         '''
         元素点击
         '''
-        element = self.findelement.get_element(key)
+        element = self.findelement.get_element(args[0])
         if element == None:
-            return key, "元素没找到"
+            return args[0], "元素没找到"
         element.click()
 
     def sleep_time(self, *args):
